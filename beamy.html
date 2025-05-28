@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Nidhi, From Rakib 🌸</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #ffe6f2 0%, #fff0f7 100%);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .top-message {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.6rem;
+      color: #d6336c;
+      text-shadow: 2px 2px #fff;
+      z-index: 10;
+    }
+    .bear-container {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 220px;
+      cursor: pointer;
+      z-index: 5;
+    }
+    .touch-note {
+      position: absolute;
+      bottom: 260px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1rem;
+      color: #d6336c;
+      text-shadow: 1px 1px #fff;
+      z-index: 10;
+    }
+    /* Bear Styles */
+    .bear-ear { position: absolute; width: 34px; height: 34px; background: #fff; border: 2px solid #ccc; border-radius: 50%; }
+    .bear-ear.left { top: 8px; left: 8px; }
+    .bear-ear.right { top: 8px; right: 8px; }
+    .bear-ear::after { content: ''; position: absolute; width: 18px; height: 18px; background: #f0f0f0; border-radius: 50%; top: 8px; left: 8px; }
+    .bear-head { position: absolute; top: 20px; left: 20px; width: 100px; height: 100px; background: #fff; border: 2px solid #ccc; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .bear-eye { position: absolute; width: 14px; height: 14px; background: #333; border-radius: 50%; top: 55px; }
+    .bear-eye.left { left: 40px; }
+    .bear-eye.right { left: 68px; }
+    .bear-eye::after { content: ''; position: absolute; width: 6px; height: 6px; background: #fff; border-radius: 50%; top: 2px; left: 2px; }
+    .bear-nose { position: absolute; width: 16px; height: 12px; background: #333; border-radius: 50% 50% 60% 60%; top: 75px; left: 62px; }
+    .bear-mouth { position: absolute; width: 26px; height: 14px; border-bottom: 3px solid #333; border-radius: 0 0 50% 50%; top: 85px; left: 55px; }
+    .bear-body { position: absolute; top: 110px; left: 20px; width: 100px; height: 120px; background: #4da6ff; border: 2px solid #ccc; border-radius: 50% / 60%; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .bear-arm { position: absolute; width: 26px; height: 70px; top: 120px; background: linear-gradient(to bottom, #4da6ff 50%, #fff 50%); border: 2px solid #ccc; border-radius: 20px; transform-origin: top center; animation: wave 1s ease-in-out infinite; }
+    .bear-arm.left { left: 0; }
+    .bear-arm.right { right: 0; }
+    @keyframes wave { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-40deg); } }
+    .bear-leg { position: absolute; width: 32px; height: 60px; background: #fff; border: 2px solid #ccc; border-radius: 20px; top: 210px; }
+    .bear-leg.left { left: 20px; }
+    .bear-leg.right { right: 20px; }
+    .bounce { animation: bounce 0.4s ease; }
+    @keyframes bounce { 0%,100% { transform: translateX(-50%); } 50% { transform: translateX(-50%) translateY(-20px); } }
+    /* Screens */
+    .screen { width: 300px; height: 280px; background: rgba(255,255,255,0.85); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; z-index: 1; }
+    .screen.hidden { display: none; }
+    .btn { margin: 12px 0; padding: 10px 20px; font-size: 1rem; color: #fff; background: #4da6ff; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.2s; }
+    .btn:hover { transform: scale(1.05); }
+    .burst { position: absolute; font-size: 1.8rem; pointer-events: none; animation: fadeBurst 1s ease-out infinite; }
+    @keyframes fadeBurst { 0% { opacity:1; } 100% { opacity:0; } }
+  </style>
+</head>
+<body>
+  <div class="top-message" id="header">I love you Nidhi - Rahkib 💕</div>
+
+  <div class="bear-container" id="bear">
+    <div class="bear-ear left"></div>
+    <div class="bear-ear right"></div>
+    <div class="bear-head"></div>
+    <div class="bear-eye left"></div>
+    <div class="bear-eye right"></div>
+    <div class="bear-nose"></div>
+    <div class="bear-mouth"></div>
+    <div class="bear-body"></div>
+    <div class="bear-arm left"></div>
+    <div class="bear-arm right"></div>
+    <div class="bear-leg left"></div>
+    <div class="bear-leg right"></div>
+  </div>
+  <div class="touch-note" id="touchNote">Poke me!!!!!!</div>
+
+  <div class="screen" id="startScreen">
+    <button class="btn" id="startBtn">Start the Fun 💖</button>
+  </div>
+  <div class="screen hidden" id="choiceScreen">
+    <h2 style="color:#d6336c; margin-bottom:16px;">Pick something!!!!</h2>
+    <button class="btn choice" data-choice="flowers">🌷 Flowers</button>
+    <button class="btn choice" data-choice="chocolate">🍫 Chocolates</button>
+    <button class="btn choice" data-choice="icecream">🍦 Ice Cream</button>
+  </div>
+  <div class="screen hidden" id="resultScreen">
+    <h2 id="resultText" style="color:#d6336c; margin-bottom:16px;"></h2>
+    <button class="btn" id="backBtn">Choose Again 🔄</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const startBtn = document.getElementById('startBtn');
+      const startScreen = document.getElementById('startScreen');
+      const choiceScreen = document.getElementById('choiceScreen');
+      const resultScreen = document.getElementById('resultScreen');
+      const header = document.getElementById('header');
+      const backBtn = document.getElementById('backBtn');
+      const bear = document.getElementById('bear');
+      const touchNote = document.getElementById('touchNote');
+
+      // Start button
+      startBtn.addEventListener('click', () => {
+        startScreen.classList.add('hidden');
+        choiceScreen.classList.remove('hidden');
+        header.textContent = 'Pick something!!!!';
+      });
+
+      // Choice buttons
+      document.querySelectorAll('.choice').forEach(btn => {
+        btn.addEventListener('click', () => handleChoice(btn.dataset.choice));
+      });
+
+      // Back button
+      backBtn.addEventListener('click', () => {
+        clearInterval(window.burstInterval);
+        resultScreen.classList.add('hidden');
+        choiceScreen.classList.remove('hidden');
+        header.textContent = 'Pick something!!!!';
+      });
+
+      // Bear click interaction
+      bear.addEventListener('click', () => {
+        bear.classList.add('bounce');
+        touchNote.style.display = 'none';
+        for (let i = 0; i < 12; i++) {
+          const h = document.createElement('div');
+          h.className = 'burst';
+          h.textContent = '💖';
+          const x = 50 + (Math.random() * 40 - 20);
+          const y = 70 + (Math.random() * 20 - 10);
+          h.style.left = `${x}%`;
+          h.style.top = `${y}%`;
+          document.body.appendChild(h);
+          setTimeout(() => h.remove(), 1000);
+        }
+        setTimeout(() => bear.classList.remove('bounce'), 400);
+      });
+
+      // Handle choice selection
+      function handleChoice(choice) {
+        choiceScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        const messages = {
+          flowers: 'Here are some pretty flowers for my pretty girl. Your favorite; piony flowers 🌷',
+          chocolate: 'Sweet chocolates for my sweet sweet girl :) 🍫',
+          icecream: 'Cool ice cream surprise for my cool girl 🍦'
+        };
+        header.textContent = messages[choice];
+        continuousBurst(choice);
+      }
+
+      // Continuous burst animation
+      function continuousBurst(type) {
+        const icons = { flowers: '🌷', chocolate: '🍫', icecream: '🍦' }[type];
+        clearInterval(window.burstInterval);
+        window.burstInterval = setInterval(() => {
+          const b = document.createElement('div');
+          b.className = 'burst';
+          b.textContent = icons;
+          b.style.left = `${Math.random() * 100}%`;
+          b.style.top = `${Math.random() * 100}%`;
+          document.body.appendChild(b);
+          setTimeout(() => b.remove(), 1000);
+        }, 200);
+      }
+
+    });
+  </script>
+</body>
+</html>
